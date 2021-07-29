@@ -10,11 +10,11 @@ import { User } from '../../Models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded: boolean = false;
   enabled: boolean = true;
-  currentClasses={}
-  currentStyles = {}
+  currentClasses = {};
+  currentStyles = {};
 
   constructor() {}
 
@@ -30,7 +30,9 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/1',
-        isActive:true
+        isActive: true,
+        balance: 100,
+        registered: new Date('01/02/2021 05:40:00'),
       },
       {
         firstName: 'Kevin',
@@ -42,6 +44,8 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/2',
+        balance: 200,
+        registered: new Date('01/03/2021 06:40:00'),
       },
       {
         firstName: 'David',
@@ -53,6 +57,8 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/3',
+        balance: 300,
+        registered: new Date('01/05/2021 18:00:00'),
       },
       {
         firstName: 'Christian',
@@ -64,6 +70,8 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/4',
+        balance: 400,
+        registered: new Date('01/08/2021 10:20:00'),
       },
     ];
 
@@ -71,6 +79,8 @@ export class UsersComponent implements OnInit {
       firstName: 'Damian',
       lastName: 'Doe',
       image: 'http://lorempixel.com/600/600/people/5',
+      balance: 150,
+      registered: new Date('01/02/2021 15:40:00'),
       /* age: 30,
       address: {
         street: '50 Main st',
@@ -91,17 +101,17 @@ export class UsersComponent implements OnInit {
     this.users.push(user);
   }
 
-  setCurrentClasses(){
+  setCurrentClasses() {
     this.currentClasses = {
-      'btn-success':this.enabled,
-      'big-text':this.showExtended
-    }
+      'btn-success': this.enabled,
+      'big-text': this.showExtended,
+    };
   }
 
-  setCurrentStyles(){
+  setCurrentStyles() {
     this.currentStyles = {
-      'padding-top':this.showExtended ? '0':"40px",
-      'font-size':this.showExtended?'':'30px'
-    }
+      'padding-top': this.showExtended ? '0' : '40px',
+      'font-size': this.showExtended ? '' : '30px',
+    };
   }
 }
