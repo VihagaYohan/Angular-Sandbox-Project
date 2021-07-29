@@ -6,17 +6,36 @@
   <form (submit)="onSubmit($event)">
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input class="form-control" type="text" id="firstName" name="firstName" />
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="user.firstName"
+        id="firstName"
+        name="firstName"
+      />
+      {{ user.firstName }}
     </div>
 
     <div class="form-group">
       <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" id="lastName" class="form-control" />
+      <input
+        [(ngModel)]="user.lastName"
+        type="text"
+        name="lastName"
+        id="lastName"
+        class="form-control"
+      />
     </div>
 
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="number" name="age" id="age" class="form-control" />
+      <input
+        [(ngModel)]="user.age"
+        type="number"
+        name="age"
+        id="age"
+        class="form-control"
+      />
     </div>
 
     <div class="form-group">
@@ -40,14 +59,10 @@
     </div>
 
     <button
+      [disabled]="user.firstName == '' || user.lastName == ''"
       class="btn btn-block mb-3"
       (click)="
-        addUser({
-          firstName: 'Many',
-          lastName: 'Jackson',
-          isActive: true,
-          image: 'http://lorempixel.com/600/600/people/6'
-        })
+        addUser()
       "
     >
       Add User

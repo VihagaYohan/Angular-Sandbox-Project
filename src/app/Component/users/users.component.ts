@@ -9,11 +9,21 @@ import { User } from '../../Models/User';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    age: undefined,
+    address: {
+      street: '',
+      city: '',
+      state: '',
+    },
+  };
   users: User[];
-  showUserForm:boolean = true;
+  showUserForm: boolean = true;
   showExtended: boolean = true;
   loaded: boolean = false;
-  enabled: boolean = true;
+  enabled: boolean = false;
   currentClasses = {};
   currentStyles = {};
 
@@ -80,20 +90,7 @@ export class UsersComponent implements OnInit {
       },
     ];
 
-    this.addUser({
-      firstName: 'Damian',
-      lastName: 'Doe',
-      image: 'http://lorempixel.com/600/600/people/5',
-      balance: 150,
-      registered: new Date('01/02/2021 15:40:00'),
-      hide: true,
-      /* age: 30,
-      address: {
-        street: '50 Main st',
-        city: 'Boston',
-        state: 'MA',
-      }, */
-    });
+    this.addUser();
 
     setTimeout(() => {
       this.loaded = true;
@@ -103,8 +100,31 @@ export class UsersComponent implements OnInit {
     this.setCurrentStyles();
   }
 
-  addUser(user: User) {
+  /* addUser(user: User) {
     this.users.push(user);
+  } */
+
+  addUser() {
+    this.user.address = {
+      street: '50 Main st',
+      city: 'Boston',
+      state: 'MA',
+    };
+    this.user.isActive = true;
+    this.user.registered = new Date();
+
+    this.users.unshift(this.user);
+
+    this.user = {
+      firstName: '',
+      lastName: '',
+      age: undefined,
+      address: {
+        street: '',
+        city: '',
+        state: '',
+      },
+    };
   }
 
   setCurrentClasses() {
@@ -125,12 +145,12 @@ export class UsersComponent implements OnInit {
     console.log(e);
   }
 
-  toggleUser(user:User){
+  toggleUser(user: User) {
     user.hide = !user.hide;
   }
 
-  onSubmit(e:Event){
-    console.log(e)
+  onSubmit(e: Event) {
+    console.log(e);
     e.preventDefault(); // prevent defaut submit behavior (reloading web page)
   }
 }
