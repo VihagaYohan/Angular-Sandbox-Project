@@ -1,10 +1,14 @@
 <h2>List of users</h2>
-<!-- property binding -->
-<button [disabled]="!enabled" class="btn btn-light btn-block mb-3">
+<!-- property binding and property binding usng ngClass for multiple class bindings -->
+<button [disabled]="!enabled" class="btn btn-block mb-3" [ngClass]="currentClasses">
   Add New User
 </button>
 <ul class="list-unstyled" *ngIf="loaded && users.length > 0; else noUsers">
-  <li class="card card-body mb-2" *ngFor="let user of users">
+  <li
+    class="card card-body mb-2"
+    *ngFor="let user of users"
+    [class.bg-light]="user.isActive"
+  >
     <div class="row">
       <div class="col-sm-4">
         ` <img class="img-fluid" [src]="user.image" alt="user-image" />

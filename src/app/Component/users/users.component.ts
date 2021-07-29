@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   showExtended: boolean = true;
   loaded: boolean = false;
   enabled: boolean = true;
+  currentClasses={}
 
   constructor() {}
 
@@ -28,6 +29,7 @@ export class UsersComponent implements OnInit {
           state: 'MA',
         },
         image: 'http://lorempixel.com/600/600/people/1',
+        isActive:true
       },
       {
         firstName: 'Kevin',
@@ -79,9 +81,18 @@ export class UsersComponent implements OnInit {
     setTimeout(() => {
       this.loaded = true;
     }, 2000);
+
+    this.setCurrentClasses();
   }
 
   addUser(user: User) {
     this.users.push(user);
+  }
+
+  setCurrentClasses(){
+    this.currentClasses = {
+      'btn-success':this.enabled,
+      'big-text':this.showExtended
+    }
   }
 }
