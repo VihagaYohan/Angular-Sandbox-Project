@@ -10,10 +10,11 @@ import { User } from '../../Models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded: boolean = false;
   enabled: boolean = true;
   currentClasses={}
+  currentStyles = {}
 
   constructor() {}
 
@@ -83,6 +84,7 @@ export class UsersComponent implements OnInit {
     }, 2000);
 
     this.setCurrentClasses();
+    this.setCurrentStyles();
   }
 
   addUser(user: User) {
@@ -93,6 +95,13 @@ export class UsersComponent implements OnInit {
     this.currentClasses = {
       'btn-success':this.enabled,
       'big-text':this.showExtended
+    }
+  }
+
+  setCurrentStyles(){
+    this.currentStyles = {
+      'padding-top':this.showExtended ? '0':"40px",
+      'font-size':this.showExtended?'':'30px'
     }
   }
 }

@@ -1,20 +1,27 @@
 <h2>List of users</h2>
 <!-- property binding and property binding usng ngClass for multiple class bindings -->
-<button [disabled]="!enabled" class="btn btn-block mb-3" [ngClass]="currentClasses">
+<button
+  [disabled]="!enabled"
+  class="btn btn-block mb-3"
+  [ngClass]="currentClasses"
+>
   Add New User
 </button>
 <ul class="list-unstyled" *ngIf="loaded && users.length > 0; else noUsers">
+  <!-- style binding -->
   <li
     class="card card-body mb-2"
     *ngFor="let user of users"
     [class.bg-light]="user.isActive"
+    [style.border-color]="user.isActive ? 'green' : ''"
   >
     <div class="row">
       <div class="col-sm-4">
         ` <img class="img-fluid" [src]="user.image" alt="user-image" />
       </div>
       <div class="col-sm-8">
-        <h3>
+        <!-- ngStyle -->
+        <h3 [ngStyle]="currentStyles">
           <span [textContent]="user.firstName"></span> {{ user.lastName }}
         </h3>
 
