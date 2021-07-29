@@ -6,7 +6,7 @@ import { User } from '../Models/User';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class UserService {
   users: User[];
   data:Observable<any>;
 

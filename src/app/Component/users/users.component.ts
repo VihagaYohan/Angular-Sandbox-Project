@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../Models/User';
 
 // services
-import { DataService } from '../../Services/data.service';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
   currentClasses = {};
   currentStyles = {};
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: UserService) {
     // this.users = dataService.getUsers();
     this.dataService.getUsers().subscribe((users) => {
       this.users = users;
