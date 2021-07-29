@@ -4,6 +4,14 @@
   [disabled]="!enabled"
   class="btn btn-block mb-3"
   [ngClass]="currentClasses"
+  (click)="
+    addUser({
+      firstName: 'Many',
+      lastName: 'Jackson',
+      isActive: true,
+      image:'http://lorempixel.com/600/600/people/6'
+    })
+  "
 >
   Add New User
 </button>
