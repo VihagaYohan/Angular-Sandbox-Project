@@ -10,6 +10,7 @@ import { User } from '../../Models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
+  showUserForm:boolean = true;
   showExtended: boolean = true;
   loaded: boolean = false;
   enabled: boolean = true;
@@ -126,5 +127,10 @@ export class UsersComponent implements OnInit {
 
   toggleUser(user:User){
     user.hide = !user.hide;
+  }
+
+  onSubmit(e:Event){
+    console.log(e)
+    e.preventDefault(); // prevent defaut submit behavior (reloading web page)
   }
 }

@@ -1,6 +1,62 @@
-<h2>List of users</h2>
+<button class="btn btn-dark mb-3" (click)="showUserForm = !showUserForm">
+  Add User
+</button>
+
+<div class="card card-body mb-3" *ngIf="showUserForm">
+  <form (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input class="form-control" type="text" id="firstName" name="firstName" />
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" id="lastName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="streetAddress">Street Address</label>
+      <input
+        type="text"
+        name="streetAddress"
+        id="streetAddress"
+        class="form-control"
+      />
+    </div>
+
+    <div class="from-group">
+      <label for="city">City</label>
+      <input type="text" name="city" id="city" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="state">State</label>
+      <input type="text" name="state" id="state" class="form-control" />
+    </div>
+
+    <button
+      class="btn btn-block mb-3"
+      (click)="
+        addUser({
+          firstName: 'Many',
+          lastName: 'Jackson',
+          isActive: true,
+          image: 'http://lorempixel.com/600/600/people/6'
+        })
+      "
+    >
+      Add User
+    </button>
+  </form>
+</div>
+
 <!-- property binding and property binding usng ngClass for multiple class bindings -->
-<button
+<!-- <button
   [disabled]="!enabled"
   class="btn btn-block mb-3"
   [ngClass]="currentClasses"
@@ -12,9 +68,10 @@
       image: 'http://lorempixel.com/600/600/people/6'
     })
   "
->
+> 
   Add New User
-</button>
+</button>-->
+
 <ul class="list-unstyled" *ngIf="loaded && users.length > 0; else noUsers">
   <!-- style binding -->
   <li
