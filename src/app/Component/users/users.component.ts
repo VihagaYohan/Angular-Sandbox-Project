@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 // model
 import { User } from '../../Models/User';
 
+// services
+import { DataService } from '../../Services/data.service';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -13,6 +16,7 @@ export class UsersComponent implements OnInit {
     firstName: '',
     lastName: '',
     age: undefined,
+    email: '',
     address: {
       street: '',
       city: '',
@@ -27,7 +31,9 @@ export class UsersComponent implements OnInit {
   currentClasses = {};
   currentStyles = {};
 
-  constructor() {}
+  constructor(private dataService: DataService) {
+    this.users = dataService.getUsers();
+  }
 
   ngOnInit(): void {
     this.users = [
@@ -113,7 +119,7 @@ export class UsersComponent implements OnInit {
     this.user.isActive = true;
     this.user.registered = new Date();
 
-    this.users.unshift(this.user);
+    this.dataService.addUser(this.user);
 
     this.user = {
       firstName: '',
