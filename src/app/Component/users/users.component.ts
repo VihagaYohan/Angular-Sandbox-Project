@@ -10,7 +10,7 @@ import { User } from '../../Models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded: boolean = false;
   enabled: boolean = true;
   currentClasses = {};
@@ -33,6 +33,7 @@ export class UsersComponent implements OnInit {
         isActive: true,
         balance: 100,
         registered: new Date('01/02/2021 05:40:00'),
+        hide: true,
       },
       {
         firstName: 'Kevin',
@@ -46,6 +47,7 @@ export class UsersComponent implements OnInit {
         image: 'http://lorempixel.com/600/600/people/2',
         balance: 200,
         registered: new Date('01/03/2021 06:40:00'),
+        hide: true,
       },
       {
         firstName: 'David',
@@ -59,6 +61,7 @@ export class UsersComponent implements OnInit {
         image: 'http://lorempixel.com/600/600/people/3',
         balance: 300,
         registered: new Date('01/05/2021 18:00:00'),
+        hide: true,
       },
       {
         firstName: 'Christian',
@@ -72,6 +75,7 @@ export class UsersComponent implements OnInit {
         image: 'http://lorempixel.com/600/600/people/4',
         balance: 400,
         registered: new Date('01/08/2021 10:20:00'),
+        hide: true,
       },
     ];
 
@@ -81,6 +85,7 @@ export class UsersComponent implements OnInit {
       image: 'http://lorempixel.com/600/600/people/5',
       balance: 150,
       registered: new Date('01/02/2021 15:40:00'),
+      hide: true,
       /* age: 30,
       address: {
         street: '50 Main st',
@@ -115,7 +120,11 @@ export class UsersComponent implements OnInit {
     };
   }
 
-  fireEvent(e:Event){
-    console.log(e)
+  fireEvent(e: Event) {
+    console.log(e);
+  }
+
+  toggleUser(user:User){
+    user.hide = !user.hide;
   }
 }
