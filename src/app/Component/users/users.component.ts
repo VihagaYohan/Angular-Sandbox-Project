@@ -32,7 +32,11 @@ export class UsersComponent implements OnInit {
   currentStyles = {};
 
   constructor(private dataService: DataService) {
-    this.users = dataService.getUsers();
+    // this.users = dataService.getUsers();
+    this.dataService.getUsers().subscribe((users) => {
+      this.users = users;
+      this.loaded = true;
+    });
   }
 
   ngOnInit(): void {

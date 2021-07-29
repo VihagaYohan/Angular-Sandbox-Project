@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {Observable,of} from 'rxjs'
+
 import { User } from '../Models/User';
 
 @Injectable({
@@ -6,6 +8,7 @@ import { User } from '../Models/User';
 })
 export class DataService {
   users: User[];
+  data:Observable<any>;
 
   constructor() {
     this.users = [
@@ -69,8 +72,11 @@ export class DataService {
     ];
   }
 
-  getUsers():User[]{
+ /*  getUsers():User[]{
     return this.users;
+  } */
+  getUsers():Observable<User[]>{
+    return of(this.users)
   }
 
   addUser(user:User){
